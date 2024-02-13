@@ -5,4 +5,4 @@ on:
       - 'main'
 jobs:
   CI_Steps:
-    uses: jyothsna-shrey/github-actions/sample.yml@main
+    uses: jyothsna-shrey/github-actions/.github/workflows/sample.yml@main
