@@ -1,14 +1,12 @@
 name: reusable workflow example
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request, workflow_call]
+
 jobs:
-  CI_Steps:
+  build:
     runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Unit Tests
         run: echo Unit Tests
