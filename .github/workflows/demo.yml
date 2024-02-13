@@ -8,7 +8,6 @@ jobs:
   CI_Steps:
     runs-on: self-hosted
     steps:
-
       - name: Unit Tests
       - run: echo Unit Tests
 
