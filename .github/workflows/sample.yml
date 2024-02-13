@@ -1,5 +1,4 @@
 name: reusable workflow example
-
 on:
   Push:
     branches:
