@@ -1,4 +1,3 @@
-
 name: Developer_Pull_Request
 on:
   push:
@@ -9,17 +8,17 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Unit Tests
-      - run: echo Unit Tests
+        run: echo Unit Tests
 
       - name: Integration Tests
-      - run: echo Integration Tests
+        run: echo Integration Tests
 
       - name: SAST Scans
-      - run: echo SAST Scans
+        run: echo SAST Scans
 
       - name: Detect Secrets in Source Code
-      - run: echo Detect Secrets in Source Code
+        run: echo Detect Secrets in Source Code
 
       - name: Code Quality
-      - run: echo Code Quality
+        run: echo Code Quality
 
