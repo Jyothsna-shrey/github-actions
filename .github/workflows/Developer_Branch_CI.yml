@@ -14,7 +14,8 @@ jobs:
         run: echo Integration Tests
 
       - name: Code Quality
-        run: echo Code Quality
+        run:  sonar-scanner -Dsonar.host.url=http://sonarqube-int.jyothsnashrey.online:9000 -Dsonar.login={{ secret.SONAR_USER }} -Dsonar.password={{ secret.SONAR_PASS }} -Dsonar.projectKey=expense-backend
+
 
 
 
