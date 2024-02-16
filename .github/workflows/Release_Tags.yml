@@ -1,11 +1,16 @@
 name: Release_Tags
-on: [workflow_call]
+on:
+  workflow_call:
+    inputs:
+      service_name:
+        type: string
+        required: true
 jobs:
   CI_Steps:
     runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 #v4 is version of checkout action release by git actions
+        uses: actions/checkout@v4
 
       - name: SAST Scans
         run: echo SAST Scans
@@ -18,5 +23,7 @@ jobs:
 
       - name: Produce Artifact
         run: echo Produce Artifact
+
+
 
 
