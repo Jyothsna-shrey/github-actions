@@ -22,10 +22,17 @@ jobs:
         run: echo Detect Secrets in Source Code
 
       - name: Produce Artifact
-        run: |   #pipe symbol to run multiple commands
-          env
-          
+        env:
+            service_name: ${{ inputs.service_name }}
 
+        run: |  #pipe symbol to run multiple commands
+          npm install  #this is used to get all the  dependencies
+          zip -r ${service_name}-${GITHUB_REF_NAME}.zip * -x .github
+          curl -v -X put -u  admin:Admin123 -T ${service_name}-${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${service_name}-${GITHUB_REF_NAME}.zip
+        
+        
+
+        # you can * also but it will also keep .github folder which is unnecessary so we will ignore that directory by -x
 
 
 
