@@ -22,7 +22,9 @@ jobs:
         run: echo Detect Secrets in Source Code
 
       - name: Produce Artifact
-        run: echo Produce Artifact
+        run: |   #pipe symbol to run multiple commands
+          env
+          
 
 
 
