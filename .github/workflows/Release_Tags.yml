@@ -21,15 +21,23 @@ jobs:
       - name: Detect Secrets in Source Code
         run: echo Detect Secrets in Source Code
 
+#      - name: Produce Artifact
+#        env:
+#            service_name: ${{ inputs.service_name }}
+#            ARTIFACTORY_CREDENTIALS: ${{ secrets.ARTIFACTORY_CREDENTIALS }}
+#
+#        run: |  #pipe symbol to run multiple commands
+#          npm install  #this is used to get all the  dependencies
+#          zip -r ${service_name}-${GITHUB_REF_NAME}.zip * -x .github
+#          curl -f -v -X PUT -u  ARTIFACTORY_CREDENTIALS -T ${service_name}-${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${service_name}-${GITHUB_REF_NAME}.zip
+
       - name: Produce Artifact
         env:
-            service_name: ${{ inputs.service_name }}
-            ARTIFACTORY_CREDENTIALS: ${{ secrets.ARTIFACTORY_CREDENTIALS }}
-
-        run: |  #pipe symbol to run multiple commands
-          npm install  #this is used to get all the  dependencies
-          zip -r ${service_name}-${GITHUB_REF_NAME}.zip * -x .github
-          curl -f -v -X PUT -u  ARTIFACTORY_CREDENTIALS -T ${service_name}-${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${service_name}-${GITHUB_REF_NAME}.zip
+          service_name: ${{ inputs.service_name }}
+          ARTIFACTORY_CREDENTIALS: ${{ secrets.ARTIFACTORY_CREDENTIALS }}
+        run: |
+          zip -r ${GITHUB_REF_NAME}.zip * -x .github
+          curl -f -v -X PUT -u ${ARTIFACTORY_CREDENTIALS} -T ${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${GITHUB_REF_NAME}.zip    
         
         # curl -f will fail the download if something is wrong with the code above curl
 
