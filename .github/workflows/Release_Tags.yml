@@ -29,7 +29,7 @@ jobs:
         run: |  #pipe symbol to run multiple commands
           npm install  #this is used to get all the  dependencies
           zip -r ${service_name}-${GITHUB_REF_NAME}.zip * -x .github
-          curl -f -v -X put -u  ARTIFACTORY_CREDENTIALS -T ${service_name}-${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${service_name}-${GITHUB_REF_NAME}.zip
+          curl -f -v -X PUT -u  ARTIFACTORY_CREDENTIALS -T ${service_name}-${GITHUB_REF_NAME}.zip http://artifactory-int.jyothsnashrey.online:8081/artifactory/${service_name}/${service_name}-${GITHUB_REF_NAME}.zip
         
         # curl -f will fail the download if something is wrong with the code above curl
 
