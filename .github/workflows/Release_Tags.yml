@@ -21,6 +21,10 @@ jobs:
       - name: Detect Secrets in Source Code
         run: echo Detect Secrets in Source Code
 
+      - name: Download Dependencies
+        if: input.service_name == 'expense-backend'
+        run: npm install
+
       - name: Produce Artifact
         env:
           service_name: ${{ inputs.service_name }}
